@@ -1,0 +1,16 @@
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<body>
+    <h2>Owners Find</h2>
+    <form method="get" th:object="${owner}" th:action="@{/owners}">
+        <label>Last Name</label>
+        <div><input th:field="*{lastName}" /></div>
+        <div th:if="${#fields.hasErrors()}">
+            <p th:each="error : ${#fields.allErrors()}" th:text="${error}"></p>
+        </div>
+        <div>
+            <button type="submit">Find Owners</button>
+            <a th:href="@{/owners/new}">Add Owner</a>
+        </div>
+    </form>
+</body>
+</html>
